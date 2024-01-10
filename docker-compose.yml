@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  app-web:
+    build:
+      context: .
+      dockerfile: deployment/Dockerfile
+      target: runtime
+    ports:
+      - 8080:80
+    volumes:
+      - ./:/app
+  database:
+    image: mariadb:10.11
+    command: --performance-schema=1
+    environment:
+      MYSQL_ROOT_PASSWORD: $DB_ROOT_PASSWORD
+      MYSQL_USER: $DB_USERNAME
+      MYSQL_PASSWORD: $DB_PASSWORD
+      MYSQL_DATABASE: $DB_DATABASE
+      MARIADB_AUTO_UPGRADE: 1
+    ports:
+      - 3306:3306
+    volumes:
+      - database-data:/var/lib/mysql
+  
+volumes:
+  database-data: null

@@ -36,8 +36,9 @@ echo "Now: "$(date -Iseconds)
 
 export NGINX_REAL_IP_FROM=${NGINX_REAL_IP_FROM:-0.0.0.0/32}
 export NGINX_ROOT=${NGINX_ROOT:-/app/public}
+export NGINX_TRY_FILES=${NGINX_TRY_FILES:-\$uri \$uri/ /index.php?\$query_string}
 
-[ -f /etc/nginx/conf/nginx.conf.template ] && envsubst '$NGINX_CSP $NGINX_REAL_IP_FROM $NGINX_ROOT' < /etc/nginx/conf/nginx.conf.template > /etc/nginx/conf/nginx.conf
+[ -f /etc/nginx/conf/nginx.conf.template ] && envsubst '$NGINX_CSP $NGINX_REAL_IP_FROM $NGINX_ROOT $NGINX_TRY_FILES' </etc/nginx/conf/nginx.conf.template >/etc/nginx/conf/nginx.conf
 
 [ -f docker-before-start.sh ] && bash docker-before-start.sh
 
@@ -49,4 +50,3 @@ if [ "${1#-}" != "$1" ]; then
 fi
 
 exec "$@"
-

@@ -64,8 +64,8 @@ http {
 		#}
 
 		location / {
-			root            ${NGINX_ROOT};
-			try_files $uri $uri/ /index.php?$query_string;
+			root ${NGINX_ROOT};
+			try_files ${NGINX_TRY_FILES};
 		}
 
 		location = /favicon.ico { access_log off; log_not_found off; }

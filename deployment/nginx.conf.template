@@ -1,4 +1,4 @@
-user  nginx www;
+user  app app;
 worker_processes  auto;
 
 error_log /dev/stdout info;

@@ -6,23 +6,48 @@ services:
       context: .
       dockerfile: deployment/Dockerfile
       target: runtime
+    environment:
+      DOCKER_USER_ID: ${DOCKER_USER_ID:-1000}
+      DOCKER_GROUP_ID: ${DOCKER_GROUP_ID:-1000}
     ports:
       - 8080:80
     volumes:
       - ./:/app
+  # Uncomment if needed:
+  # app-queue-worker:
+  #   build:
+  #     context: .
+  #     dockerfile: deployment/Dockerfile
+  #     target: runtime
+  #   command: php artisan queue:work
+  #   environment:
+  #     DOCKER_USER_ID: ${DOCKER_USER_ID:-1000}
+  #     DOCKER_GROUP_ID: ${DOCKER_GROUP_ID:-1000}
+  #   volumes:
+  #     - ./:/app
+  # app-scheduler:
+  #   build:
+  #     context: .
+  #     dockerfile: deployment/Dockerfile
+  #     target: runtime
+  #   command: php artisan schedule:work
+  #   environment:
+  #     DOCKER_USER_ID: ${DOCKER_USER_ID:-1000}
+  #     DOCKER_GROUP_ID: ${DOCKER_GROUP_ID:-1000}
+  #   volumes:
+  #     - ./:/app
   database:
-    image: mariadb:10.11
+    image: mysql:8
     command: --performance-schema=1
     environment:
-      MYSQL_ROOT_PASSWORD: $DB_ROOT_PASSWORD
-      MYSQL_USER: $DB_USERNAME
-      MYSQL_PASSWORD: $DB_PASSWORD
-      MYSQL_DATABASE: $DB_DATABASE
-      MARIADB_AUTO_UPGRADE: 1
+      MYSQL_ROOT_PASSWORD: superpassword
+      MYSQL_USER: dbuser
+      MYSQL_PASSWORD: dbpass
+      MYSQL_DATABASE: dbname
     ports:
       - 3306:3306
     volumes:
       - database-data:/var/lib/mysql
-  
+
 volumes:
   database-data: null

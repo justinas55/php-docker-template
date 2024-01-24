@@ -1,5 +1,6 @@
 .ash_history
 *.local
 node_modules
-supervisord.log
+*.log
 supervisord.pid
+deploy-webhook.config.php

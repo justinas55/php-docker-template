@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: deployment/Dockerfile
-      target: runtime
+      target: dev
     environment:
       DOCKER_USER_ID: ${DOCKER_USER_ID:-1000}
       DOCKER_GROUP_ID: ${DOCKER_GROUP_ID:-1000}

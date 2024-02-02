@@ -14,6 +14,13 @@ services:
     volumes:
       - ./:/app
   # Uncomment if needed:
+  # npm-watch:
+  #   image: node
+  #   command: bash -c 'npm run dev -- --host'
+  #   user: "${DOCKER_USER_ID:-1000}:${DOCKER_GROUP_ID:-1000}"
+  #   working_dir: /app
+  #   volumes:
+  #     - ./:/app
   # app-queue-worker:
   #   build:
   #     context: .

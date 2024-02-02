@@ -23,6 +23,7 @@ services:
   #     - 127.0.0.1:5173:5173
   #   volumes:
   #     - ./:/app
+  ## service separator (for programmatic uncomments)
   # app-queue-worker:
   #   build:
   #     context: .
@@ -34,6 +35,7 @@ services:
   #     DOCKER_GROUP_ID: ${DOCKER_GROUP_ID:-1000}
   #   volumes:
   #     - ./:/app
+  ## service separator (for programmatic uncomments)
   # app-scheduler:
   #   build:
   #     context: .
@@ -45,6 +47,7 @@ services:
   #     DOCKER_GROUP_ID: ${DOCKER_GROUP_ID:-1000}
   #   volumes:
   #     - ./:/app
+  ## service separator (for programmatic uncomments)
   database:
     image: mysql:8
     command: --performance-schema=1

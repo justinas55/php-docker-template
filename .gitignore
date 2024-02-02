@@ -1,6 +1,6 @@
 .ash_history
 *.local
-node_modules
 *.log
 supervisord.pid
 deploy-webhook.config.php
+.config/psysh

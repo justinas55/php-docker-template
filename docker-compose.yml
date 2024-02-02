@@ -19,6 +19,8 @@ services:
   #   command: bash -c 'npm run dev -- --host'
   #   user: "${DOCKER_USER_ID:-1000}:${DOCKER_GROUP_ID:-1000}"
   #   working_dir: /app
+  #   ports:
+  #     - 127.0.0.1:5173:5173
   #   volumes:
   #     - ./:/app
   # app-queue-worker:

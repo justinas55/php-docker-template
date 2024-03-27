@@ -1,6 +1,15 @@
-version: "3.8"
-
 services:
+  shell:
+    build:
+      context: .
+      dockerfile: deployment/Dockerfile
+      target: dev
+    command: -c 'sleep 9999999'
+    environment:
+      DOCKER_USER_ID: ${DOCKER_USER_ID:-1000}
+      DOCKER_GROUP_ID: ${DOCKER_GROUP_ID:-1000}
+    volumes:
+      - ./:/app
   app-web:
     build:
       context: .

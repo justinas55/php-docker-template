@@ -4,3 +4,4 @@
 supervisord.pid
 deploy-webhook.config.php
 .config/psysh
+.composer
